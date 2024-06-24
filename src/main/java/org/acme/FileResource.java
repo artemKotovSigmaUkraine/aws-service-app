@@ -33,7 +33,6 @@ public class FileResource {
     @Path("/{fileName}")
     public Response downloadFile(@PathParam("fileName") String fileName) {
         byte[] fileInBytes = fileService.downloadFileFromS3(fileName);
-
         Response.ResponseBuilder responseBuilder = Response.ok(fileInBytes);
         responseBuilder.type("application/pdf");
         responseBuilder.header("Content-Disposition", "filename=" + fileName);
