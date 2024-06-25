@@ -1,0 +1,19 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+  pre_build:
+    commands:
+      - echo In the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mvn clean package
+      - mv target/aws-service-app-1.0.0-SNAPSHOT.jar aws-service-app-1.0.0-SNAPSHOT.jar
+artifacts:
+  files:
+    - aws-service-app-1.0.0-SNAPSHOT.jar
